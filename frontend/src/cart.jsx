@@ -15,12 +15,13 @@ export function CartProvider({ children }) {
     catch { setStorageError('Your browser could not save the cart. Keep this page open to retain it.'); }
     setItems(next);
   }
-  function add(sku, qty) {
+  // `max` is the per-line limit: min(10, stock) from the product page.
+  function add(sku, qty, max = 10) {
     const current = Array.isArray(items) ? items : [];
     const found = current.find(item => item?.sku === sku);
     if (found) save(current.map(item => item?.sku === sku
-      ? { sku, qty: Math.min(10, (Number.isInteger(item.qty) ? item.qty : 0) + qty) } : item));
-    else save([...current, { sku, qty }]);
+      ? { sku, qty: Math.min(max, (Number.isInteger(item.qty) ? item.qty : 0) + qty) } : item));
+    else save([...current, { sku, qty: Math.min(max, qty) }]);
   }
   const count = Array.isArray(items) ? items.reduce((sum, item) =>
     sum + (Number.isInteger(item?.qty) && item.qty > 0 ? item.qty : 0), 0) : 0;

@@ -21,7 +21,7 @@ import static com.foundoutside.store.StoreModels.*;
 
 @Service
 public class StoreService {
-    private static final Set<String> CATEGORIES = Set.of("rocks", "sticks", "tiny-things", "bulk");
+    private static final Set<String> CATEGORIES = Set.of("rocks", "sticks", "tiny-things", "lost-and-found", "bulk");
     private final Map<String, Product> products = new LinkedHashMap<>();
     private final Map<Integer, Order> orders = new LinkedHashMap<>();
     private final TaxConfiguration taxConfiguration;
@@ -34,7 +34,7 @@ public class StoreService {
             for (Product product : seed) {
                 if (products.put(product.sku(), product) != null) throw new IOException("Duplicate seed SKU");
             }
-            if (products.size() != 12) throw new IOException("Expected twelve seed products");
+            if (products.size() != 13) throw new IOException("Expected thirteen seed products");
         }
     }
 
@@ -83,13 +83,13 @@ public class StoreService {
 
     private Quote price(List<Item> items) {
         int rate = taxConfiguration.requiredRate();
-        List<OrderLine> lines = new ArrayList<>();
+        List<QuoteLine> lines = new ArrayList<>();
         BigInteger subtotal = BigInteger.ZERO;
         BigInteger fee = BigInteger.ZERO;
         for (Item item : items) {
             Product product = products.get(item.sku());
             BigInteger lineTotal = BigInteger.valueOf(product.priceCents()).multiply(item.qty());
-            lines.add(new OrderLine(product.sku(), product.name(), product.priceCents(), item.qty(), lineTotal));
+            lines.add(new QuoteLine(product.sku(), product.name(), product.priceCents(), item.qty(), product.stock(), lineTotal));
             subtotal = subtotal.add(lineTotal);
             if (product.attributes().weightGrams() >= 2000)
                 fee = fee.add(BigInteger.valueOf(500).multiply(item.qty()));
@@ -122,7 +122,8 @@ public class StoreService {
             if (item.qty().compareTo(BigInteger.valueOf(product.stock())) > 0)
                 throw new ApiException(409, "OUT_OF_STOCK", product.sku() + ": only " + product.stock() + " left");
         }
-        Order order = new Order(nextOrderNumber++, name, email, quote.lines(), quote.subtotalCents(),
+        Order order = new Order(nextOrderNumber++, name, email,
+                quote.lines().stream().map(QuoteLine::toOrderLine).toList(), quote.subtotalCents(),
                 quote.feeCents(), quote.taxRatePercent(), quote.taxCents(), quote.totalCents(), Instant.now());
         for (Item item : items) {
             Product product = products.get(item.sku());

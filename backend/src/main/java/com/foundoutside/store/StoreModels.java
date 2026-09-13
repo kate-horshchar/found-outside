@@ -19,7 +19,14 @@ public final class StoreModels {
     public record Item(String sku, BigInteger qty) {}
     public record OrderLine(String sku, String name, int unitPriceCents, BigInteger qty,
                             BigInteger lineTotalCents) {}
-    public record Quote(List<OrderLine> lines, BigInteger subtotalCents, BigInteger feeCents,
+    /** Quote line with the product's current stock, so the cart can warn before checkout. */
+    public record QuoteLine(String sku, String name, int unitPriceCents, BigInteger qty, int stock,
+                            BigInteger lineTotalCents) {
+        public OrderLine toOrderLine() {
+            return new OrderLine(sku, name, unitPriceCents, qty, lineTotalCents);
+        }
+    }
+    public record Quote(List<QuoteLine> lines, BigInteger subtotalCents, BigInteger feeCents,
                         int taxRatePercent, BigInteger taxCents, BigInteger totalCents) {}
     public record Order(int number, String customerName, String email, List<OrderLine> lines,
                         BigInteger subtotalCents, BigInteger feeCents, int taxRatePercent,
