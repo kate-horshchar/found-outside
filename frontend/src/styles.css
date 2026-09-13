@@ -1,21 +1,130 @@
-:root {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  color: #1F1D1A;
-  background: #F4F0E8;
-  font-synthesis: none;
-  line-height: 1.5;
-}
+:root { font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; color: #1F1D1A; background: #F4F0E8; font-synthesis: none; line-height: 1.5; }
 * { box-sizing: border-box; }
 body { margin: 0; }
 #root { min-height: 100vh; display: flex; flex-direction: column; }
-header, main, footer { padding: 1.5rem clamp(1.25rem, 6vw, 6rem); }
-header { border-bottom: 1px solid #DAD3C5; }
-header a { color: inherit; text-decoration: none; font: 1.5rem Georgia, serif; }
-main { flex: 1; padding-top: 4rem; padding-bottom: 4rem; }
-h1 { font: normal clamp(2.5rem, 6vw, 5rem)/1.1 Georgia, serif; margin: 1.5rem 0; }
-h2 { font: normal 1.4rem Georgia, serif; }
-.label { color: #6B655A; font: 0.8rem 'Courier New', monospace; }
-section { margin-top: 3rem; border-top: 1px solid #DAD3C5; max-width: 38rem; }
-[role='status'] { color: #A5533A; }
-.error { color: #B23A2E; overflow-wrap: anywhere; }
-footer { border-top: 1px solid #DAD3C5; color: #6B655A; font-size: 0.85rem; }
+a { color: inherit; text-underline-offset: 4px; }
+button, input, select { font: inherit; border-radius: 0; }
+button { cursor: pointer; }
+button:disabled { cursor: default; opacity: .45; }
+:focus-visible { outline: 2px solid #A5533A; outline-offset: 4px; }
+h1, h2, h3, .wordmark, .footer-wordmark { font-family: 'Libre Caslon Text', Georgia, serif; font-weight: 400; }
+h1 { font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.18; margin: 1rem 0 1.5rem; letter-spacing: -.045em; }
+h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.3; margin: 0; letter-spacing: -.03em; }
+h3 { font-size: 1.25rem; line-height: 1.4; margin: .45rem 0; }
+p { margin: 0 0 1rem; }
+.site-header, main, .site-footer { width: min(1440px, 100%); margin: 0 auto; padding-inline: clamp(1.25rem, 4vw, 4rem); }
+.site-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.75rem; border-bottom: 1px solid #DAD3C5; }
+.wordmark { font-size: 1.75rem; line-height: 1.2; text-decoration: none; letter-spacing: -.04em; }
+.wordmark span { display: block; font: .65rem 'IBM Plex Mono', 'Courier New', monospace; letter-spacing: .01em; margin-top: .65rem; color: #6B655A; }
+.site-header nav { display: flex; gap: 2.5rem; font-size: .9rem; align-items: center; }
+.site-header nav a { text-decoration: none; padding-block: .4rem; }
+.site-header nav a.active { border-bottom: 1px solid #A5533A; }
+.cart-badge { display: inline-flex; justify-content: center; align-items: center; min-width: 1.45rem; height: 1.45rem; margin-left: .5rem; background: #A5533A; color: #F4F0E8; font: .75rem 'IBM Plex Mono', monospace; }
+main { flex: 1; padding-block: 2rem 5rem; }
+.eyebrow { font: .7rem/1.6 'IBM Plex Mono', 'Courier New', monospace; text-transform: uppercase; letter-spacing: .08em; color: #7A7468; }
+.intro-banner { position: relative; min-height: 360px; background: #E7E0D3; overflow: hidden; }
+.intro-banner > img { display: block; width: 100%; height: auto; min-height: 360px; object-fit: cover; }
+.intro-copy { position: absolute; z-index: 1; left: 4%; top: 50%; transform: translateY(-50%); width: 40%; }
+.intro-copy h1 { font-size: clamp(2rem, 3.7vw, 3.7rem); }
+.intro-copy > p:last-child { max-width: 25rem; font-size: .95rem; color: #6B655A; margin: 0; }
+.catalogue { margin-top: 4rem; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.75rem; }
+.section-heading .eyebrow { margin-bottom: .6rem; }
+.catalogue-controls { display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-block: 1px solid #DAD3C5; margin-bottom: 2rem; }
+.category-tabs { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.category-tabs button { border: 0; border-bottom: 2px solid transparent; padding: 1rem 0; background: transparent; font-size: .9rem; color: #6B655A; }
+.category-tabs button[aria-pressed='true'] { color: #A5533A; border-color: #A5533A; }
+.sort-select { font-size: .8rem; color: #6B655A; white-space: nowrap; }
+.sort-select select { background: transparent; border: 0; color: #1F1D1A; padding: .8rem .25rem; margin-left: .4rem; }
+.product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem 1.5rem; }
+.product-card { min-width: 0; }
+.product-link { text-decoration: none; display: block; }
+.product-link:hover h3 { color: #A5533A; }
+.product-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #E7E0D3; }
+.card-heading { display: flex; justify-content: space-between; gap: .5rem; align-items: center; margin-top: 1rem; }
+.price, .detail-price, .order-summary dd { font-family: 'IBM Plex Mono', 'Courier New', monospace; }
+.price { font-size: .85rem; white-space: nowrap; }
+.caption { color: #6B655A; font-size: .8rem; }
+.product-card .caption { margin-bottom: .65rem; }
+.stock { font-size: .75rem; color: #6B655A; }
+.stock-special { color: #A5533A; }
+.back-link { display: inline-block; margin: .5rem 0 2rem; text-decoration: none; color: #6B655A; font-size: .85rem; }
+.product-detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.product-information { padding-top: 1rem; }
+.product-information h1 { margin-top: .65rem; margin-bottom: .8rem; }
+blockquote { font: 1.25rem/1.7 'Libre Caslon Text', Georgia, serif; margin: 2rem 0 1.5rem; }
+.description { color: #6B655A; line-height: 1.8; }
+.spec-sheet { margin: 2rem 0; font-size: .85rem; border-top: 1px solid #DAD3C5; }
+.spec-sheet > div, .order-summary > div { display: flex; justify-content: space-between; gap: 1rem; padding-block: .65rem; }
+.spec-sheet > div { border-bottom: 1px solid #DAD3C5; }
+dt { color: #6B655A; } dd { margin: 0; text-align: right; }
+.spec-sheet dd { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+.purchase { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.detail-price { font-size: 1.35rem; margin-right: auto; }
+.button { display: inline-flex; align-items: center; justify-content: center; background: #A5533A; color: #F4F0E8; border: 1px solid #A5533A; padding: .9rem 1.4rem; font-size: .9rem; text-decoration: none; min-height: 46px; }
+.button:hover:not(:disabled) { background: #8E442F; }
+.quantity { display: inline-flex; align-items: center; border: 1px solid #DAD3C5; min-height: 46px; }
+.quantity button { border: 0; background: transparent; width: 2.4rem; min-height: 44px; }
+.quantity output { font: .85rem 'IBM Plex Mono', monospace; min-width: 1.7rem; text-align: center; }
+.success { color: #A5533A; padding-top: 1rem; font-size: .9rem; }
+.error-banner { border-left: 3px solid #B23A2E; background: #E7E0D3; color: #B23A2E; padding: 1rem 1.2rem; margin-bottom: 1.5rem; overflow-wrap: anywhere; }
+.error-banner p { margin: 0; }
+.text-button { border: 0; background: transparent; padding: .25rem 0; text-decoration: underline; text-underline-offset: 4px; font-size: .8rem; color: inherit; }
+.loading { padding: 3rem 0; color: #6B655A; }
+.empty-state { padding: clamp(3rem, 9vw, 8rem) 0; }
+.empty-state .button { margin-top: 1rem; }
+.page-heading { margin: 1.5rem 0 3rem; }
+.cart-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr); gap: clamp(2rem, 5vw, 5rem); }
+.cart-line { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 1.1rem; padding: 1.3rem 0; border-top: 1px solid #DAD3C5; }
+.cart-line h2 { font-size: 1.15rem; margin-bottom: .4rem; }
+.cart-line a { text-decoration: none; }
+.cart-line .remove { grid-column: 1 / -1; justify-self: start; color: #6B655A; }
+.checkout-panel { background: #E7E0D3; padding: 1.75rem; align-self: start; }
+.checkout-panel h2 { font-size: 1.5rem; }
+.order-summary { margin: 1.5rem 0 2rem; font-size: .9rem; }
+.order-summary .total { border-top: 1px solid #DAD3C5; margin-top: .7rem; padding-top: 1rem; font-size: 1.15rem; }
+.order-summary .total dt { color: #1F1D1A; }
+form { display: flex; flex-direction: column; }
+form label { font-size: .85rem; margin-bottom: .4rem; }
+form input { padding: .8rem; background: #F4F0E8; border: 1px solid #DAD3C5; margin-bottom: 1.2rem; width: 100%; }
+.checkout-panel > .caption { margin-top: 1rem; margin-bottom: 0; }
+.confirmation { width: min(100%, 620px); margin: 3rem auto; }
+.confirmation-name { color: #6B655A; }
+.confirmation-lines { border-top: 1px solid #DAD3C5; margin-top: 2.5rem; }
+.confirmation-lines > div { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #DAD3C5; }
+.site-footer { border-top: 1px solid #DAD3C5; padding-block: 2rem; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+.footer-wordmark { font-size: 1.2rem; }
+.site-footer p { color: #6B655A; font-size: .75rem; margin: 0; }
+@media (max-width: 1000px) {
+  .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .intro-copy { width: 45%; }
+  .purchase .button { width: 100%; }
+  .cart-layout { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .cart-line { grid-template-columns: 1fr auto; }
+  .cart-line > div:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .site-header { padding-block: 1.2rem; }
+  .wordmark { font-size: 1.4rem; }
+  .wordmark span { display: none; }
+  .site-header nav { gap: 1rem; font-size: .8rem; }
+  main { padding-top: 1.25rem; }
+  .intro-banner > img { min-height: 0; aspect-ratio: 12/5; }
+  .intro-banner { display: flex; flex-direction: column-reverse; min-height: 0; }
+  .intro-copy { position: static; transform: none; width: 100%; padding: 1.8rem 1.5rem 1rem; }
+  .intro-copy h1 { font-size: 2.4rem; }
+  .catalogue { margin-top: 2.5rem; }
+  .catalogue-controls { flex-wrap: wrap; gap: 0; }
+  .category-tabs { width: 100%; justify-content: space-between; gap: .6rem; }
+  .category-tabs button { font-size: .8rem; }
+  .sort-select { margin-left: auto; }
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1rem; }
+  .card-heading { align-items: start; flex-direction: column; gap: .2rem; }
+  .product-card h3 { font-size: 1.05rem; }
+  .caption { font-size: .75rem; }
+  .product-detail, .cart-layout { grid-template-columns: 1fr; }
+  .product-information { padding-top: 0; }
+  .product-detail > .product-photo { max-height: 620px; object-fit: contain; }
+  .site-footer { align-items: start; flex-direction: column; }
+  .confirmation { margin-block: 1rem; }
+}

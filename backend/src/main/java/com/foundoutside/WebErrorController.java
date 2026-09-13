@@ -19,7 +19,9 @@ public class WebErrorController implements ErrorController {
         // Missing assets and API routes must never receive the SPA HTML.
         if (status == 404 && "GET".equals(request.getMethod()) && path != null
                 && !path.equals("/api") && !path.startsWith("/api/")
-                && !path.equals("/index.html") && !path.contains(".")
+                && !path.equals("/index.html") && !path.startsWith("/assets/")
+                && !path.startsWith("/licenses/") && !path.equals("/banner.webp")
+                && !path.equals("/favicon.ico")
                 && getClass().getResource("/static/index.html") != null) {
             ModelAndView fallback = new ModelAndView("forward:/index.html");
             fallback.setStatus(HttpStatus.OK);

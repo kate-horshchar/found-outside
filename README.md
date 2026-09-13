@@ -1,8 +1,10 @@
 # Found Outside
 
-A parody store and future TeamCity MCP investigation demo. Phase 1 is a runnable
-React + Spring Boot scaffold: a connection-status page and `GET /api/health` only.
-The store, Docker setup, TeamCity and failure scenarios are not implemented yet.
+A parody store and future TeamCity MCP investigation demo. The application has a
+12-specimen catalogue, product pages, a cart with server-calculated quotes and
+simulated adoption checkout. Nothing is sold and no payment is collected.
+React/Vite and Spring Boot share one repository and one production Java JAR.
+Docker, TeamCity, failure scenarios and the full baseline test suite are deferred.
 
 ## Requirements
 
@@ -17,6 +19,7 @@ Terminal 1, from the repository root:
 
 ```powershell
 cd backend
+$env:TAX_RATE_PERCENT = '20'
 .\mvnw.cmd -B -ntp spring-boot:run
 ```
 
@@ -28,7 +31,7 @@ npm.cmd ci
 npm.cmd run dev
 ```
 
-Open <http://localhost:5173>. The page must show `Backend connected — status: ok`.
+Open <http://localhost:5173> to browse the collection.
 The Vite proxy forwards `/api` to <http://127.0.0.1:8080>.
 Use Ctrl+C in each terminal to stop. `npm.cmd` avoids PowerShell's script policy
 restriction on `npm.ps1`; changing execution policy is unnecessary.
@@ -43,6 +46,7 @@ npm.cmd --prefix frontend run build
 cd backend
 .\mvnw.cmd -B -ntp clean verify
 cd ..
+$env:TAX_RATE_PERCENT = '20'
 java -jar backend/target/found-outside.jar
 ```
 
@@ -61,13 +65,36 @@ Java and Node versions are unchanged.
 ## Configuration and next phases
 
 `.env.example` contains the safe future Compose input `TAX_RATE_PERCENT=20`.
-Spring Boot does not read `.env` automatically. Future local pricing tests will
-inherit `$env:TAX_RATE_PERCENT = '20'`; no tax default will be supplied by the app
-or test harness. Phase 1 health works without this setting.
+Spring Boot does not read `.env` automatically. Set `$env:TAX_RATE_PERCENT = '20'`
+in the terminal that starts Java (Unix: `export TAX_RATE_PERCENT=20`). No tax default
+is supplied by the app or test harness. Without a valid integer from 0 through 100,
+the app starts and the catalogue works, but quotes and checkout return the exact
+`CONFIG_MISSING` error defined in the spec. The app logs the same warning once.
+
+State is in memory. Stop and restart Java to restore all seed stock, discard
+orders and restart order numbering at 1001. The browser cart survives independently
+in localStorage (`found-outside-cart`); checkout clears it. A stored cart containing
+invalid data receives the API error and offers **Clear cart**.
+
+Reference adoption: Boulderina x1 + Gerald x1 at tax 20% = subtotal EUR144.00,
+heavy lifting fee EUR5.00, tax EUR29.80, total EUR178.80.
+
+Product copy is sourced from `docs/PRODUCT_CONTENT.md` and stored with the seed in
+`backend/src/main/resources/data/products.json`. All product data, ordering and
+quote totals are supplied by the backend; React does not duplicate the catalogue.
+
+Replace the labelled illustration placeholders with final photos at:
+
+- `backend/src/main/resources/images/<SKU>.webp` (1200 x 1500, at most 200 KB each).
+- `frontend/public/banner.webp` (2400 x 1000, at most 400 KB).
+
+Keep filenames unchanged, rebuild frontend/backend, and restart Java. No source
+code change is required. Local fonts and their OFL licenses are bundled in the
+frontend; runtime does not fetch fonts, images or APIs from external services.
 
 Docker commands are deferred until the root Dockerfile and Compose service exist.
 The planned command is `docker compose up --build` after copying `.env.example`
-to `.env`. Do not treat this as available in Phase 1.
+to `.env`. Docker is not implemented in Phase 2.
 
 See [MVP spec](docs/MVP_SPEC.md), [technical design](docs/TECHNICAL_DESIGN.md), and
 [project state and verification](docs/PROJECT_STATE.md).

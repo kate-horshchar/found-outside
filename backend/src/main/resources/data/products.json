@@ -1,0 +1,218 @@
+[
+  {
+    "sku": "ROCK-GERALD",
+    "catalogueNumber": "001",
+    "name": "Gerald",
+    "category": "rocks",
+    "priceCents": 2400,
+    "stock": 1,
+    "tagline": "Reliably average. Has never let anyone down, mostly because he has never done anything.",
+    "description": "Recovered from a riverbank, where he had been lying for some time. Gerald is grey on every side, which our curators describe as consistent. He fits in a pocket and makes no demands.",
+    "imageUrl": "/api/images/ROCK-GERALD.webp",
+    "imageAlt": "Photo of Gerald",
+    "attributes": {
+      "weightGrams": 180,
+      "sizeCm": 6,
+      "color": "grey",
+      "foundAt": "riverbank"
+    }
+  },
+  {
+    "sku": "ROCK-BOULDERINA",
+    "catalogueNumber": "002",
+    "name": "Boulderina",
+    "category": "rocks",
+    "priceCents": 12000,
+    "stock": 1,
+    "tagline": "Exactly two kilograms. And she knows it.",
+    "description": "Weighed three times to confirm: exactly 2000 grams. Collected from a quarry, where she was the only stone that met our standards. Handle with both hands and appropriate respect.",
+    "imageUrl": "/api/images/ROCK-BOULDERINA.webp",
+    "imageAlt": "Photo of Boulderina",
+    "attributes": {
+      "weightGrams": 2000,
+      "sizeCm": 14,
+      "color": "sandstone",
+      "foundAt": "quarry"
+    }
+  },
+  {
+    "sku": "ROCK-HEART-ISH",
+    "catalogueNumber": "003",
+    "name": "Heart-Shaped-Ish",
+    "category": "rocks",
+    "priceCents": 4500,
+    "stock": 1,
+    "tagline": "Heart-shaped if you squint and really want it to be.",
+    "description": "Found on a hiking trail by a collector who very much wanted to find a heart-shaped rock. The pink granite is genuine; the heart is a matter of interpretation. A thoughtful gift for people who appreciate effort.",
+    "imageUrl": "/api/images/ROCK-HEART-ISH.webp",
+    "imageAlt": "Photo of Heart-Shaped-Ish",
+    "attributes": {
+      "weightGrams": 300,
+      "sizeCm": 9,
+      "color": "pink granite",
+      "foundAt": "hiking trail"
+    }
+  },
+  {
+    "sku": "ROCK-WORRY",
+    "catalogueNumber": "004",
+    "name": "Pocket Worry Stone",
+    "category": "rocks",
+    "priceCents": 1200,
+    "stock": 25,
+    "tagline": "Absorbs worries. Capacity not guaranteed.",
+    "description": "A smooth piece of slate from a lake shore, sized for a thumb. Rub it when anxious. Results are not documented, but the stone has never complained.",
+    "imageUrl": "/api/images/ROCK-WORRY.webp",
+    "imageAlt": "Photo of Pocket Worry Stone",
+    "attributes": {
+      "weightGrams": 60,
+      "sizeCm": 4,
+      "color": "slate",
+      "foundAt": "lake shore"
+    }
+  },
+  {
+    "sku": "STICK-CLASSIC",
+    "catalogueNumber": "005",
+    "name": "The Classic Stick",
+    "category": "sticks",
+    "priceCents": 3500,
+    "stock": 4,
+    "tagline": "The stick your dog dreams about.",
+    "description": "An oak stick of the kind every dog recognises at once. Selected in a park for its length, balance and general throwability. Bark partially intact.",
+    "imageUrl": "/api/images/STICK-CLASSIC.webp",
+    "imageAlt": "Photo of The Classic Stick",
+    "attributes": {
+      "weightGrams": 350,
+      "sizeCm": 90,
+      "color": "oak",
+      "foundAt": "park"
+    }
+  },
+  {
+    "sku": "STICK-STRAIGHT",
+    "catalogueNumber": "006",
+    "name": "Suspiciously Straight Stick",
+    "category": "sticks",
+    "priceCents": 4000,
+    "stock": 1,
+    "tagline": "Too straight. We have questions.",
+    "description": "Collected in a forest, where sticks are rarely this straight. We measured it, and it is straight. We do not know why, and we have stopped asking.",
+    "imageUrl": "/api/images/STICK-STRAIGHT.webp",
+    "imageAlt": "Photo of Suspiciously Straight Stick",
+    "attributes": {
+      "weightGrams": 300,
+      "sizeCm": 100,
+      "color": "pine",
+      "foundAt": "forest"
+    }
+  },
+  {
+    "sku": "STICK-LOG",
+    "catalogueNumber": "007",
+    "name": "The Log",
+    "category": "sticks",
+    "priceCents": 9000,
+    "stock": 2,
+    "tagline": "Sits there. Excellent at it.",
+    "description": "A section of birch log, 40 centimetres long and fully committed to being a log. It does not roll unless provoked. It will stay exactly where you put it, for years.",
+    "imageUrl": "/api/images/STICK-LOG.webp",
+    "imageAlt": "Photo of The Log",
+    "attributes": {
+      "weightGrams": 3500,
+      "sizeCm": 40,
+      "color": "birch",
+      "foundAt": "forest"
+    }
+  },
+  {
+    "sku": "TINY-GRASS",
+    "catalogueNumber": "008",
+    "name": "Single Blade of Grass",
+    "category": "tiny-things",
+    "priceCents": 900,
+    "stock": 50,
+    "tagline": "Hand-picked. From a lawn. Our lawn.",
+    "description": "A single blade of grass, selected from a lawn of several million candidates. It registers as 0 grams on our scales. Supplied flat, green and ready to be admired.",
+    "imageUrl": "/api/images/TINY-GRASS.webp",
+    "imageAlt": "Photo of Single Blade of Grass",
+    "attributes": {
+      "weightGrams": 0,
+      "sizeCm": 12,
+      "color": "green",
+      "foundAt": "a lawn"
+    }
+  },
+  {
+    "sku": "TINY-LEAF",
+    "catalogueNumber": "009",
+    "name": "Autumn Leaf",
+    "category": "tiny-things",
+    "priceCents": 1400,
+    "stock": 8,
+    "tagline": "Peaked in October. Still proud.",
+    "description": "A maple leaf collected at the height of its colour. It has since dried slightly and become more confident. Do not fold.",
+    "imageUrl": "/api/images/TINY-LEAF.webp",
+    "imageAlt": "Photo of Autumn Leaf",
+    "attributes": {
+      "weightGrams": 1,
+      "sizeCm": 11,
+      "color": "red",
+      "foundAt": "maple tree"
+    }
+  },
+  {
+    "sku": "TINY-FEATHER",
+    "catalogueNumber": "010",
+    "name": "Very Normal Feather",
+    "category": "tiny-things",
+    "priceCents": 1800,
+    "stock": 6,
+    "tagline": "Previous owner unknown. Probably a pigeon.",
+    "description": "Found in a city square and attributed to a pigeon, although no pigeon has come forward. Grey-white, lightweight and very normal. Flight not included.",
+    "imageUrl": "/api/images/TINY-FEATHER.webp",
+    "imageAlt": "Photo of Very Normal Feather",
+    "attributes": {
+      "weightGrams": 1,
+      "sizeCm": 9,
+      "color": "grey-white",
+      "foundAt": "city square"
+    }
+  },
+  {
+    "sku": "TINY-ACORN",
+    "catalogueNumber": "011",
+    "name": "Acorn",
+    "category": "tiny-things",
+    "priceCents": 600,
+    "stock": 40,
+    "tagline": "A future oak with no immediate plans.",
+    "description": "An acorn in excellent condition, cap attached. In theory it contains an entire oak tree. In practice it has shown no interest in becoming one.",
+    "imageUrl": "/api/images/TINY-ACORN.webp",
+    "imageAlt": "Photo of Acorn",
+    "attributes": {
+      "weightGrams": 3,
+      "sizeCm": 2,
+      "color": "brown",
+      "foundAt": "oak tree"
+    }
+  },
+  {
+    "sku": "BULK-SAND",
+    "catalogueNumber": "012",
+    "name": "Premium Sand",
+    "category": "bulk",
+    "priceCents": 1500,
+    "stock": 20,
+    "tagline": "Too many grains to count. We tried.",
+    "description": "Five hundred grams of beach sand, sifted once for dignity. Grain count unknown; we started counting and lost our place. Supplied as a neat heap.",
+    "imageUrl": "/api/images/BULK-SAND.webp",
+    "imageAlt": "Photo of Premium Sand",
+    "attributes": {
+      "weightGrams": 500,
+      "sizeCm": 10,
+      "color": "beige",
+      "foundAt": "a beach"
+    }
+  }
+]
