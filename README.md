@@ -76,8 +76,8 @@ orders and restart order numbering at 1001. The browser cart survives independen
 in localStorage (`found-outside-cart`); checkout clears it. A stored cart containing
 invalid data receives the API error and offers **Clear cart**.
 
-Reference adoption: Boulderina x1 + Gerald x1 at tax 20% = subtotal EUR144.00,
-heavy lifting fee EUR5.00, tax EUR29.80, total EUR178.80.
+Reference adoption: Boulderina x1 + Gerald x1 at tax 20% = subtotal $144.00,
+heavy lifting fee $5.00, tax $29.80, total $178.80.
 
 Product copy is sourced from `docs/PRODUCT_CONTENT.md` and stored with the seed in
 `backend/src/main/resources/data/products.json`. All product data, ordering and

@@ -1,4 +1,5 @@
 node_modules/
+.m2/
 frontend/dist/
 backend/target/
 .tools/
@@ -7,6 +8,7 @@ backend/target/
 .env.*
 !.env.example
 *.log
+*.stackdump
 .idea/
 *.iml
 .vscode/
