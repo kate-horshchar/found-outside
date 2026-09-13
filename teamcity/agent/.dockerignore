@@ -1,0 +1,4 @@
+# The agent image copies nothing from this directory. Keep conf/ (authorization token)
+# and logs/ out of the build context.
+*
+!Dockerfile

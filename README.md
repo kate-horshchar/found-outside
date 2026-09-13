@@ -3,7 +3,8 @@
 A parody online store ("Premium goods. Found outside.") used as a deterministic CI test
 target for TeamCity failure-investigation demos. A React + Vite frontend and a Spring Boot
 API ship as one Java application. The store is not real: no products are actually sold
-and no payments are taken. CI runs in TeamCity on `main`.
+and no payments are taken. CI runs in TeamCity on `main`; see
+[teamcity/README.md](teamcity/README.md) for the local TeamCity setup.
 
 ## Run with Docker
 

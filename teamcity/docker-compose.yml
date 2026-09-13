@@ -1,0 +1,61 @@
+name: found-outside-teamcity
+
+services:
+  teamcity-server:
+    image: jetbrains/teamcity-server:2026.1.4-linux
+    container_name: found-outside-teamcity-server
+    ports:
+      # Local-only UI/API (http://localhost:8111); the agent uses the Compose network.
+      - "127.0.0.1:8111:8111"
+    volumes:
+      # Server data directory (internal database, settings) and logs; git-ignored.
+      - ./data:/data/teamcity_server/datadir
+      - ./logs:/opt/teamcity/logs
+      - server-temp:/opt/teamcity/temp
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "--max-time", "5", "http://127.0.0.1:8111/healthCheck/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 180s
+      start_interval: 5s
+    stop_grace_period: 120s
+
+  teamcity-agent:
+    build:
+      context: ./agent
+      dockerfile: Dockerfile
+    image: found-outside-teamcity-agent:2026.1.4
+    container_name: found-outside-teamcity-agent
+    environment:
+      SERVER_URL: http://teamcity-server:8111
+      AGENT_NAME: Geralt
+    volumes:
+      # Agent configuration (includes the authorization token) and logs; git-ignored.
+      - ./agent/conf:/data/teamcity_agent/conf
+      - ./agent/logs:/opt/buildagent/logs
+      # Checkouts, agent runtime data and dependency caches stay in named Docker volumes.
+      - agent-work:/opt/buildagent/work
+      - agent-system:/opt/buildagent/system
+      - agent-temp:/opt/buildagent/temp
+      - agent-plugins:/opt/buildagent/plugins
+      - agent-tools:/opt/buildagent/tools
+      - agent-m2:/home/buildagent/.m2
+      - agent-npm:/home/buildagent/.npm
+    # Declared by the base image but unused (no Docker in builds): keep it off disk.
+    tmpfs:
+      - /var/lib/docker
+    depends_on:
+      teamcity-server:
+        condition: service_started
+    stop_grace_period: 60s
+
+volumes:
+  server-temp:
+  agent-work:
+  agent-system:
+  agent-temp:
+  agent-plugins:
+  agent-tools:
+  agent-m2:
+  agent-npm:
