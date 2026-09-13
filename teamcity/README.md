@@ -54,6 +54,57 @@ docker compose -f teamcity/docker-compose.yml logs --tail 50 teamcity-agent
 
 In the UI, **Agents** → **Connected** must show exactly one authorized agent, `Geralt`.
 
+## Build configuration (UI setup, once)
+
+Settings are entered in the TeamCity UI and are not stored in the repository, so a
+parameter change produces no VCS change.
+
+**Project** — Administration → Projects → **Create project** → **Manually**:
+name `Found Outside`, project ID `FoundOutside`.
+
+**VCS root** — project → **VCS Roots** → **Create VCS root**:
+
+| Field | Value |
+|---|---|
+| Type | Git |
+| VCS root name / ID | `found-outside main` / `FoundOutside_GitHubMain` |
+| Fetch URL | the repository's public HTTPS clone URL |
+| Default branch | `refs/heads/main` |
+| Branch specification | `+:refs/heads/main` |
+| Authentication method | Anonymous |
+| Changes checking interval | Custom, 60 seconds |
+
+**Build configuration** — project → **Create build configuration** → **Manually**:
+name `API Tests`, build configuration ID `FoundOutside_ApiTests`, build number format
+`%build.counter%`, no artifact paths. Attach the VCS root above.
+
+**Build steps** (runner type Command Line, custom script; each step runs only if all
+previous steps succeeded):
+
+| # | Step name | Working directory | Script |
+|---|---|---|---|
+| 1 | Install dependencies | `frontend` | `npm ci --no-audit --no-fund` |
+| 2 | Build frontend | `frontend` | `npm run build` |
+| 3 | Build backend | `backend` | `sh ./mvnw -B -ntp clean package -DskipTests` |
+| 4 | Run API tests | `backend` | `sh ./mvnw -B -ntp surefire:test` |
+
+Step 3 cleans old outputs and reports, compiles main and test code and packages the JAR
+without running tests. Step 4 runs the full suite once. A compilation failure stops the
+build at step 3 with zero test results. Maven dependencies are resolved by the committed
+Maven Wrapper; npm dependencies come from `package-lock.json`.
+
+**Build feature** — **XML report processing**: report type Ant JUnit, monitoring rule
+`+:backend/target/surefire-reports/TEST-*.xml` (one feature only, so tests are imported once).
+
+**Parameters** — `env.TAX_RATE_PERCENT` = `20` (environment variable, not secret).
+
+**Failure conditions** — keep the defaults (failed tests, non-zero exit code, error message
+from a runner, out of memory/crash) and add execution timeout 10 minutes.
+
+**Triggers** — **VCS Trigger**, branch filter `+:<default>`.
+
+Builds run on the single authorized agent. No personal builds, no artifacts, no Docker.
+
 ## Persistence
 
 | Location | Contents |
