@@ -26,3 +26,4 @@ teamcity/agent/conf/
 teamcity/agent/work/
 teamcity/agent/temp/
 teamcity/agent/system/
+teamcity/agent/logs/

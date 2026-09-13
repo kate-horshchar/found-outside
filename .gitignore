@@ -12,6 +12,7 @@ backend/target/
 .idea/
 *.iml
 .vscode/
+.claude/settings.local.json
 .DS_Store
 Thumbs.db
 teamcity/data/
@@ -20,5 +21,6 @@ teamcity/agent/conf/
 teamcity/agent/work/
 teamcity/agent/temp/
 teamcity/agent/system/
+teamcity/agent/logs/
 
 docs/
