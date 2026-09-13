@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-export const money = cents => `€${(cents / 100).toFixed(2)}`;
+export const money = cents => `$${(cents / 100).toFixed(2)}`;
 
 export function ErrorBanner({ error, retry }) {
   if (!error) return null;
@@ -11,11 +11,11 @@ export function StockBadge({ stock }) {
   return <span className={`stock ${stock <= 1 ? 'stock-special' : ''}`}>
     {stock === 0 ? 'Already adopted' : stock === 1 ? 'One of a kind' : `${stock} in stock`}</span>;
 }
-export function QuantityStepper({ value, onChange, name = 'Quantity', disabled = false }) {
+export function QuantityStepper({ value, onChange, name = 'Quantity', disabled = false, max = 10 }) {
   return <div className="quantity" role="group" aria-label={name}>
     <button type="button" aria-label={`Decrease ${name}`} disabled={disabled || value <= 1} onClick={() => onChange(value - 1)}>−</button>
     <output aria-label={name}>{value}</output>
-    <button type="button" aria-label={`Increase ${name}`} disabled={disabled || value >= 10} onClick={() => onChange(value + 1)}>+</button>
+    <button type="button" aria-label={`Increase ${name}`} disabled={disabled || value >= max} onClick={() => onChange(value + 1)}>+</button>
   </div>;
 }
 export function ProductPhoto({ product, eager = false }) {
