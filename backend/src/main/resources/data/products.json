@@ -54,26 +54,8 @@
     }
   },
   {
-    "sku": "ROCK-WORRY",
-    "catalogueNumber": "004",
-    "name": "Pocket Worry Stone",
-    "category": "rocks",
-    "priceCents": 1200,
-    "stock": 25,
-    "tagline": "Absorbs worries. Capacity not guaranteed.",
-    "description": "A smooth piece of slate from a lake shore, sized for a thumb. Rub it when anxious. Results are not documented, but the stone has never complained.",
-    "imageUrl": "/api/images/ROCK-WORRY.webp",
-    "imageAlt": "Photo of Pocket Worry Stone",
-    "attributes": {
-      "weightGrams": 60,
-      "sizeCm": 4,
-      "color": "slate",
-      "foundAt": "lake shore"
-    }
-  },
-  {
     "sku": "STICK-CLASSIC",
-    "catalogueNumber": "005",
+    "catalogueNumber": "004",
     "name": "The Classic Stick",
     "category": "sticks",
     "priceCents": 3500,
@@ -91,7 +73,7 @@
   },
   {
     "sku": "STICK-STRAIGHT",
-    "catalogueNumber": "006",
+    "catalogueNumber": "005",
     "name": "Suspiciously Straight Stick",
     "category": "sticks",
     "priceCents": 4000,
@@ -109,7 +91,7 @@
   },
   {
     "sku": "STICK-LOG",
-    "catalogueNumber": "007",
+    "catalogueNumber": "006",
     "name": "The Log",
     "category": "sticks",
     "priceCents": 9000,
@@ -127,7 +109,7 @@
   },
   {
     "sku": "TINY-GRASS",
-    "catalogueNumber": "008",
+    "catalogueNumber": "007",
     "name": "Single Blade of Grass",
     "category": "tiny-things",
     "priceCents": 900,
@@ -145,7 +127,7 @@
   },
   {
     "sku": "TINY-LEAF",
-    "catalogueNumber": "009",
+    "catalogueNumber": "008",
     "name": "Autumn Leaf",
     "category": "tiny-things",
     "priceCents": 1400,
@@ -163,7 +145,7 @@
   },
   {
     "sku": "TINY-FEATHER",
-    "catalogueNumber": "010",
+    "catalogueNumber": "009",
     "name": "Very Normal Feather",
     "category": "tiny-things",
     "priceCents": 1800,
@@ -181,7 +163,7 @@
   },
   {
     "sku": "TINY-ACORN",
-    "catalogueNumber": "011",
+    "catalogueNumber": "010",
     "name": "Acorn",
     "category": "tiny-things",
     "priceCents": 600,
@@ -198,8 +180,44 @@
     }
   },
   {
-    "sku": "BULK-SAND",
+    "sku": "LOST-MITTEN",
+    "catalogueNumber": "011",
+    "name": "Single Mitten",
+    "category": "lost-and-found",
+    "priceCents": 2800,
+    "stock": 1,
+    "tagline": "Waiting on a fence since February.",
+    "description": "A knitted mitten found on a park fence. Its owner has not returned, and its partner is presumed elsewhere. Warm, slightly stretched and emotionally available.",
+    "imageUrl": "/api/images/LOST-MITTEN.webp",
+    "imageAlt": "Photo of Single Mitten",
+    "attributes": {
+      "weightGrams": 60,
+      "sizeCm": 20,
+      "color": "mustard yellow",
+      "foundAt": "park fence"
+    }
+  },
+  {
+    "sku": "LOST-KEY",
     "catalogueNumber": "012",
+    "name": "Unknown Key",
+    "category": "lost-and-found",
+    "priceCents": 3200,
+    "stock": 1,
+    "tagline": "Opens something. Probably.",
+    "description": "A small brass key found beside a park bench. We have tried it in every lock in the office. The search continues.",
+    "imageUrl": "/api/images/LOST-KEY.webp",
+    "imageAlt": "Photo of Unknown Key",
+    "attributes": {
+      "weightGrams": 12,
+      "sizeCm": 6,
+      "color": "brass",
+      "foundAt": "park bench"
+    }
+  },
+  {
+    "sku": "BULK-SAND",
+    "catalogueNumber": "013",
     "name": "Premium Sand",
     "category": "bulk",
     "priceCents": 1500,
