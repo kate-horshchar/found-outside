@@ -1,0 +1,22 @@
+name: found-outside
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: found-outside-app:0.1.0
+    container_name: found-outside-app
+    ports:
+      - "8080:8080"
+    environment:
+      # Value comes from .env (or the shell). No default: missing/invalid -> CONFIG_MISSING.
+      - TAX_RATE_PERCENT
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "--show-error", "--max-time", "3", "http://127.0.0.1:8080/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+      start_interval: 2s

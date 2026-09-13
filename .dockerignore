@@ -1,0 +1,28 @@
+# Keep the build context to committed sources, assets, lockfile and wrapper.
+.git
+.env
+.env.*
+docs/
+
+# Local caches, generated outputs and verification artefacts
+.m2/
+.tools/
+.verification/
+**/node_modules/
+frontend/dist/
+backend/target/
+**/*.log
+**/*.stackdump
+.idea/
+.vscode/
+**/*.iml
+**/.DS_Store
+**/Thumbs.db
+
+# TeamCity runtime data (added in a later phase)
+teamcity/data/
+teamcity/logs/
+teamcity/agent/conf/
+teamcity/agent/work/
+teamcity/agent/temp/
+teamcity/agent/system/
