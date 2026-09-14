@@ -47,7 +47,7 @@ java -jar target/found-outside.jar
 ```
 
 On macOS/Linux use `npm`, `export TAX_RATE_PERCENT=20` and `sh ./mvnw`.
-Test reports: `backend/target/surefire-reports/`.
+Test reports (JUnit XML): `backend/target/surefire-reports/`.
 
 For frontend development, run the backend with `.\mvnw.cmd spring-boot:run` (tax set as
 above) and `npm.cmd --prefix frontend run dev`, then open <http://localhost:5173>.
