@@ -22,8 +22,6 @@ import static com.foundoutside.store.StoreModels.*;
 @Service
 public class StoreService {
     private static final Set<String> CATEGORIES = Set.of("rocks", "sticks", "tiny-things", "lost-and-found", "bulk");
-    private static final int HEAVY_ITEM_THRESHOLD_GRAMS = 2000;
-    private static final long HEAVY_ITEM_FEE_CENTS = 500;
     private final Map<String, Product> products = new LinkedHashMap<>();
     private final Map<Integer, Order> orders = new LinkedHashMap<>();
     private final TaxConfiguration taxConfiguration;
@@ -93,8 +91,8 @@ public class StoreService {
             BigInteger lineTotal = BigInteger.valueOf(product.priceCents()).multiply(item.qty());
             lines.add(new QuoteLine(product.sku(), product.name(), product.priceCents(), item.qty(), product.stock(), lineTotal));
             subtotal = subtotal.add(lineTotal);
-            if (product.attributes().weightGrams() > HEAVY_ITEM_THRESHOLD_GRAMS)
-                fee = fee.add(BigInteger.valueOf(HEAVY_ITEM_FEE_CENTS).multiply(item.qty()));
+            if (product.attributes().weightGrams() >= 2000)
+                fee = fee.add(BigInteger.valueOf(500).multiply(item.qty()));
         }
         // Nonnegative integer cents: adding 50 before dividing by 100 is exact half-up rounding.
         BigInteger tax = subtotal.add(fee).multiply(BigInteger.valueOf(rate))
